@@ -1,5 +1,3 @@
-
-
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +8,7 @@
 body {
   background: linear-gradient(to bottom, #a0d9f6, #eaf8ff);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 
@@ -111,12 +110,19 @@ nav a.active {
   color: #222;
 }
 
+
 .scroll-box {
   display: flex;
   gap: 15px;
   overflow-x: auto;
+  overflow-y: hidden;
   padding: 10px 0;
   scroll-behavior: smooth;
+  max-width: 100vw; 
+}
+
+.scroll-box::-webkit-scrollbar {
+  display: none;
 }
 
 .cat-card {
@@ -129,6 +135,7 @@ nav a.active {
   transition: 0.3s;
   width: 200px;
   height: 300px;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -181,8 +188,6 @@ nav a.active {
   margin-bottom: 5px;
 }
 
-
-
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -226,15 +231,33 @@ nav a.active {
     animation: none;
   }
 
+  
   .scroll-box {
-    gap: 10px;
-    padding: 5px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+  }
+
+  .scroll-box::-webkit-scrollbar {
+    height: 6px;
+    display: block;
+  }
+
+  .scroll-box::-webkit-scrollbar-thumb {
+    background: #2196f3;
+    border-radius: 10px;
+  }
+
+  .scroll-box::-webkit-scrollbar-track {
+    background: #ddd;
   }
 
   .cat-card {
     width: 140px;
     height: 220px;
     padding: 15px 10px;
+    flex: 0 0 auto;
   }
 
   .cat-card img {
