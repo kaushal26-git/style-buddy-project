@@ -1,53 +1,85 @@
 
-const STORAGE_KEY = 'styleBuddy_final_v6';
+ const STORAGE_KEY = 'styleBuddy_final_v6';
 const DISABLE_DAYS = 2;
 const EXPIRE_DAYS = 14;
 const MS_DAY = 24 * 60 * 60 * 1000;
+function changeGender() {
+  const newGender = prompt("Enter gender (male/female):").toLowerCase();
+  if (newGender === "male" || newGender === "female") {
+    localStorage.setItem("userGender", newGender);
+    location.reload();
+  }
+}
 
 const clothesData = {
-  Casual: [
-    { name: "T-shirt", image: "images/Tshirt.jpg" },
-     { name: "Blue Jeans", image: "images/Jeans.jpg" },
-     { name: "Sweatshirt", image: "images/Sweatshirt.jpg" },
-     { name: "Cargo pants", image: "images/Cargo pants.jpg" },
-     { name: "Polo shirt", image: "images/Polo shirt.jpg" },
-     { name: "Denim jacket", image: "images/Denim jacket.jpg" },
-     { name: "Shorts", image: "images/Shorts.jpg" },
-     { name: "Shirt (casual)", image: "images/Shirt (casual).jpg" },
-     { name: "Joggers", image: "images/Joggers.jpg" },
+  male: {
+    Casual: [
+    { name: "T-shirt", image: "images/male/Tshirt.jpg" },
+     { name: "Blue Jeans", image: "images/male/Jeans.jpg" },
+     { name: "Sweatshirt", image: "images/male/Sweatshirt.jpg" },
+     { name: "Cargo pants", image: "images/male/Cargo pants.jpg" },
+     { name: "Polo shirt", image: "images/male/Polo shirt.jpg" },
+     { name: "Denim jacket", image: "images/male/Denim jacket.jpg" },
+     { name: "Shorts", image: "images/male/Shorts.jpg" },
+     { name: "Shirt (casual)", image: "images/male/Shirt (casual).jpg" },
+     { name: "Joggers", image: "images/male/Joggers.jpg" },
    ],
-   Formal: [
-    { name: "Blazer", image: "images/Blazer.jpg" },
-    { name: "Trousers", image: "images/Trousers.jpg" },
-    { name: "Waistcoat", image: "images/Waistcoat.jpg" },
-    { name: "Suit", image: "images/Suit.jpg" },
-    { name: "Formal coat", image: "images/Formal coat.jpg" },
-    { name: "Pencil skirt", image: "images/Pencil skirt.jpg" },
-     { name: "Formal dress", image: "images/Formal dress.jpg" },
-     { name: "Dress pants", image: "images/Dress pants.jpg" },
+
+    Formal: [
+    { name: "Blazer", image: "images/male/Blazer.jpg" },
+    { name: "Waistcoat", image: "images/male/Waistcoat.jpg" },
+    { name: "Suit", image: "images/male/Suit.jpg" },
+    { name: "Formal coat", image: "images/male/Formal coat.jpg" },
    ],
-   Partywear: [
-    { name: "Sequin dress", image: "images/Sequin dress.jpg" },
-    { name: "Cocktail gown", image: "images/Cocktail gown.jpg" },
-    { name: "Party shirt", image: "images/Party shirt.jpg" },
-    { name: "Velvet blazer", image: "images/Velvet blazer.jpg" },
-    { name: "Designer kurta", image: "images/Designer kurta.jpg" },
-     { name: "Skater dress", image: "images/Skater dress.jpg" },
-    { name: "Glitter top", image: "images/Glitter top.jpg" },
-    { name: "Bodycon dress", image: "images/Bodycon dress.jpg" },
-    { name: "Stylish jacket", image: "images/Stylish jacket.jpg" },
-     { name: "Embroidered shirt", image: "images/Embroidered shirt.jpg" },
+
+       Partywear: [
+   
+    { name: "Party shirt", image: "images/male/Party shirt.jpg" },
+    { name: "Velvet blazer", image: "images/male/Velvet blazer.jpg" },
+    { name: "Designer kurta", image: "images/male/Designer kurta.jpg" },
+    { name: "Stylish jacket", image: "images/male/Stylish jacket.jpg" },
+     { name: "Embroidered shirt", image: "images/male/Embroidered shirt.jpg" },
   ],
-  Nightwear: [
-    { name: "Pajama set", image: "images/Pajama set.jpg" },
-     { name: "Nightgown", image: "images/Nightgown.jpg" },
-    { name: "Sleep shorts", image: "images/Sleep shorts.jpg" },
-    { name: "Night suit", image: "images/Night suit.jpg" },
-    { name: "Sleep T-shirt", image: "images/Sleep T-shirt.jpg" },
-    { name: "Cotton nightdress", image: "images/Cotton nightdress.jpg" },
-    { name: "Sleep trousers", image: "images/Sleep trousers.jpg" },
-    { name: "Robe", image: "images/Robe.jpg" },
+
+     Nightwear: [
+     { name: "Nightgown", image: "images/male/Nightgown.jpg" },
+    { name: "Sleep shorts", image: "images/male/Sleep shorts.jpg" },
+    { name: "Night suit", image: "images/male/Night suit.jpg" },
+    { name: "Sleep T-shirt", image: "images/male/Sleep T-shirt.jpg" },
+    { name: "Sleep trousers", image: "images/male/Sleep trousers.jpg" },
   ]
+  },
+
+  female: {
+    Casual: [
+      { name: "Crop Top", image: "images/female/crop-top.jpg" },
+      { name: "Skirt", image: "images/female/skirt.jpg" },
+      { name: "Kurti", image: "images/female/kurti.jpg" },
+      { name: "Jeans", image: "images/female/jeans.jpg" },
+      { name: "Denim Jacket", image: "images/female/denim-jacket.jpg" }
+    ],
+
+    Formal: [
+      { name: "Pencil Skirt", image: "images/female/pencil-skirt.jpg" },
+      { name: "Formal Dress", image: "images/female/formal-dress.jpg" },
+      { name: "Blazer Dress", image: "images/female/blazer-dress.jpg" },
+      { name: "Dress Pants", image: "images/female/dress-pants.jpg" }
+    ],
+
+    Partywear: [
+      { name: "Sequin Dress", image: "images/female/sequin-dress.jpg" },
+      { name: "Cocktail Gown", image: "images/female/cocktail-gown.jpg" },
+      { name: "Glitter Top", image: "images/female/glitter-top.jpg" },
+      { name: "Bodycon Dress", image: "images/female/bodycon-dress.jpg" }
+    ],
+
+    Nightwear: [
+      { name: "Nightgown", image: "images/female/nightgown.jpg" },
+      { name: "Cotton Nightdress", image: "images/female/cotton-nightdress.jpg" },
+      { name: "Sleep Shorts", image: "images/female/sleep-shorts.jpg" },
+      { name: "Robe", image: "images/female/robe.jpg" }
+    ]
+  }
 };
 
 function load() {
@@ -62,8 +94,11 @@ function daysBetween(a, b) {
 }
 
 let store = load();
-let userAdded = JSON.parse(localStorage.getItem("userAddedOutfits") || "{}");
 
+let userAdded = JSON.parse(localStorage.getItem("userAddedOutfits")) || {
+  male: {},
+  female: {}
+};
 function clean() {
   let changed = false;
   const now = new Date();
@@ -83,8 +118,10 @@ const laundryList = document.getElementById('laundryList');
 function render() {
   clean();
   app.innerHTML = '';
-
-  Object.entries(clothesData).forEach(([categoryName, items]) => {
+const userGender = localStorage.getItem("userGender") || "male";
+const genderData = clothesData[userGender];
+  
+    Object.entries(genderData).forEach(([categoryName, items]) => {
     const prefix = categoryName.toLowerCase();
     const card = document.createElement('div');
     card.className = 'category-card';
@@ -97,8 +134,10 @@ function render() {
     `;
 
     const grid = card.querySelector('.outfit-grid');
-    const allItems = [...items, ...(userAdded[categoryName] || [])];
-
+   const allItems = [
+  ...items,
+  ...((userAdded[userGender] && userAdded[userGender][categoryName]) || [])
+];
     allItems.forEach((item, i) => {
       const id = `${prefix}-${i + 1}`;
       const rec = store[id] || { lastWore: null, times: 0, confirmedAt: null };
@@ -115,17 +154,19 @@ function render() {
       `;
 
       
-      if (i >= items.length) {
-        const del = document.createElement('button');
-        del.textContent = '❌';
-        del.className = 'delete-btn';
-        del.addEventListener('click', e => {
-          e.stopPropagation();
-          deleteOutfit(categoryName, i - items.length);
-        });
-        box.appendChild(del);
-      }
+    
+if (i >= items.length) {
+  const del = document.createElement('button');
+  del.textContent = '❌';
+  del.className = 'delete-btn';
 
+  del.addEventListener('click', e => {
+    e.stopPropagation();
+    deleteOutfit(categoryName, i, true);
+  });
+
+  box.appendChild(del);
+}
       box.addEventListener('click', e => {
         const cb = box.querySelector('input');
         if (e.target === cb || cb.disabled) return;
@@ -161,39 +202,90 @@ function render() {
   renderLaundry();
 }
 
-function addOutfit(category) {
-  const name = prompt("Enter outfit name:");
-  if (!name) return;
 
-  const fileInput = document.createElement("input");
-  fileInput.type = "file";
-  fileInput.accept = "image/*";
-  fileInput.onchange = e => {
-    const file = e.target.files[0];
-    if (!file) return;
+function addOutfit(category) {
+  const userGender = localStorage.getItem("userGender") || "male";
+
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = "image/*";
+  input.style.display = "none";
+
+  document.body.appendChild(input);
+
+  input.addEventListener("change", function () {
+    const file = input.files[0];
+
+    if (!file) {
+      alert("Please select an image ❗");
+      document.body.removeChild(input);
+      return;
+    }
+
+    const name = prompt("Enter outfit name:");
+    if (!name) {
+      alert("Outfit name is required ❗");
+      document.body.removeChild(input);
+      return;
+    }
 
     const reader = new FileReader();
-    reader.onload = () => {
-      const newItem = { name, image: reader.result };
 
-      if (!userAdded[category]) userAdded[category] = [];
-      userAdded[category].push(newItem);
-      localStorage.setItem("userAddedOutfits", JSON.stringify(userAdded));
+    reader.onload = function (e) {
+      const newItem = {
+        name: name,
+        image: e.target.result
+      };
 
+      if (!userAdded[userGender]) userAdded[userGender] = {};
+      if (!userAdded[userGender][category])
+        userAdded[userGender][category] = [];
+
+      userAdded[userGender][category].push(newItem);
+
+      localStorage.setItem(
+        "userAddedOutfits",
+        JSON.stringify(userAdded)
+      );
+
+      alert("Outfit Added Successfully ✅");
+
+      document.body.removeChild(input);
       render();
     };
+
     reader.readAsDataURL(file);
-  };
-  fileInput.click();
+  });
+
+  input.click();
 }
+
+
 
 function deleteOutfit(category, index) {
-  if (!confirm("Are you sure you want to delete this outfit?")) return;
-  userAdded[category].splice(index, 1);
-  localStorage.setItem("userAddedOutfits", JSON.stringify(userAdded));
-  render();
-}
+  const userGender = localStorage.getItem("userGender") || "male";
 
+  const defaultLength = clothesData[userGender][category].length;
+
+  const userIndex = index - defaultLength;
+
+  if (
+    userAdded[userGender] &&
+    userAdded[userGender][category] &&
+    userAdded[userGender][category][userIndex] !== undefined
+  ) {
+    if (!confirm("Delete this outfit?")) return;
+
+    userAdded[userGender][category].splice(userIndex, 1);
+
+    localStorage.setItem(
+      "userAddedOutfits",
+      JSON.stringify(userAdded)
+    );
+
+    render();
+  }
+}
 function confirmSelection(prefix, items) {
   const checkedBoxes = [...document.querySelectorAll(`.outfit[data-id^="${prefix}-"] input:checked`)]
     .filter(cb => !cb.disabled);
@@ -216,10 +308,12 @@ function confirmSelection(prefix, items) {
   renderLaundry();
   setTimeout(render, 100);
 }
-
 function renderLaundry() {
   laundryList.innerHTML = '';
   const now = new Date();
+  const userGender = localStorage.getItem("userGender") || "male";
+  const genderData = clothesData[userGender];
+
   const list = Object.entries(store)
     .filter(([_, r]) => r.confirmedAt && daysBetween(r.confirmedAt, now) < EXPIRE_DAYS);
 
@@ -230,8 +324,17 @@ function renderLaundry() {
 
   list.forEach(([id, r]) => {
     const [prefix, index] = id.split('-');
-    const category = Object.keys(clothesData).find(c => c.toLowerCase() === prefix);
-    const item = clothesData[category]?.[index - 1] || userAdded[category]?.[index - 1];
+
+    
+    const category = Object.keys(genderData)
+      .find(c => c.toLowerCase() === prefix);
+
+    const defaultItems = genderData[category] || [];
+    const allItems = [...defaultItems, ...((userAdded[userGender] && userAdded[userGender][category]) || [])]
+     
+
+    const item = allItems[index - 1];
+
     const name = item?.name || id;
     const img = item?.image || '';
     const last = r.lastWore || '—';
@@ -259,3 +362,4 @@ function renderLaundry() {
 }
 
 render();
+

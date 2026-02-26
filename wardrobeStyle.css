@@ -1,4 +1,4 @@
-:root {
+ :root {
   --blue: #0577ff;
   --muted: #6b7280;
   --card: #fff;
@@ -231,6 +231,36 @@ nav a.active {
   font-weight: 700;
 }
 
+.gender-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+
+.gender-btn {
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+
+.gender-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+
+.gender-btn:active {
+  transform: scale(0.95);
+}
 
 @media (max-width: 768px) {
   header {
@@ -295,4 +325,7 @@ nav a.active {
 
 .add-btn:hover {
   background-color: #0d6efd;
-}
+} 
+
+
+
